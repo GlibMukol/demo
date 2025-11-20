@@ -33,11 +33,14 @@
 @layer base {
   html,
   body {
-    height: 100%; /* or min-height: 100vh; */
+    height: 100%;
   }
   body {
     background: var(--bg);
     color: var(--fg);
+  }
+  input {
+    border-color: var(--primary);
   }
   input[data-error="true"] {
     border-color: var(--error);
@@ -45,9 +48,9 @@
 }
 
 * {
-  @apply transition-all duration-200 ease-linear outline-none;
+  @apply transition-all duration-200 ease-linear outline-none text-gray-700;
 }
 
 input {
-  @apply border p-2 cursor-pointer rounded hover:rounded-lg focus:border-2 focus:rounded-xl;
+  @apply border p-2 cursor-pointer shadow rounded hover:rounded-lg hover:shadow-2xl focus:border-2 focus:rounded-xl;
 }
