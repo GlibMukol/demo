@@ -7,8 +7,9 @@ type TPanel = {
 
 const Panel = ({ children, styles = "" }: TPanel) => {
     return (
-        <div className={clsx("flex flex-col p-2 rounded-md border ", styles)}>
+        <div className={clsx("flex flex-col p-2 shadow-2xl shadow-foreground/10", styles)}>
             {children}
+            asd
         </div>
     )
 }
