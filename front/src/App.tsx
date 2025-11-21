@@ -1,6 +1,7 @@
 import { useState } from "react"
 import Container from "./components/ui/containers/container"
 import TextInput from "./components/ui/containers/TextInput"
+import Panel from "./components/ui/containers/Panel";
 
 
 function App() {
@@ -11,7 +12,10 @@ function App() {
     <>
       <div className="w-full h-screen">
         <Container>
-          <TextInput onChange={hadleChangeIput} value={testString} name="test" placeholder="placeholder" isError={test} />
+          <Panel>
+
+            <TextInput onChange={hadleChangeIput} value={testString} name="test" label="placeholder" isError={test} errorMessoge="Message" />
+          </Panel>
           <button className="btn" onClick={() => { setState(prev => !prev) }}>test</button>
         </Container>
       </div>

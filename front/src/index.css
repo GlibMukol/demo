@@ -48,7 +48,7 @@
 }
 
 * {
-  @apply transition-all duration-200 ease-linear outline-none text-gray-700;
+  @apply transition-all duration-200 ease-linear outline-none;
 }
 
 input {
