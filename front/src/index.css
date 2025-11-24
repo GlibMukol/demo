@@ -40,7 +40,7 @@
     color: var(--fg);
   }
   input {
-    border-color: var(--primary);
+    border-color: var(--fg);
   }
   input[data-error="true"] {
     border-color: var(--error);

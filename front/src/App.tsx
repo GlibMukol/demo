@@ -15,6 +15,7 @@ function App() {
           <Panel>
 
             <TextInput onChange={hadleChangeIput} value={testString} name="test" label="placeholder" isError={test} errorMessoge="Message" />
+            <TextInput onChange={hadleChangeIput} value={testString} name="test" label="placeholder" isError={test} errorMessoge="Message" />
           </Panel>
           <button className="btn" onClick={() => { setState(prev => !prev) }}>test</button>
         </Container>
