@@ -7,8 +7,6 @@ import { useLogin } from "./hook"
 const Login = () => {
 
     const { email, setEmail, password, setPassword } = useLogin();
-
-
     return (
         <Panel>
             <VDirection>
