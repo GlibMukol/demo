@@ -1,4 +1,5 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
+import { emailValidation, passwordValidation } from '../../validations/auth';
 
 type TFiledValid<T, E> = {
     value: T,
@@ -6,7 +7,7 @@ type TFiledValid<T, E> = {
     errors: E
 }
 
-type TLoginField = TFiledValid<string, Array<string>>
+export type TLoginField = TFiledValid<string, Array<string>>
 
 type TLogin = {
     email: TLoginField
@@ -30,15 +31,15 @@ const loginSlice = createSlice({
     name: 'login',
     initialState,
     reducers: {
-        emailOnChange: (state, action: PayloadAction<TLoginField>) => {
-            state.email = action.payload
+        emailOnChange: (state, { payload: email }: PayloadAction<string>) => {
+            state.email = emailValidation(email)
         },
-        passwordOnChange: (state, action: PayloadAction<TLoginField>) => {
-            state.password = action.payload
+        passwordOnChange: (state, { payload: password }: PayloadAction<string>) => {
+            state.password = passwordValidation(password);
         }
     },
 });
 
 
-
+export const { emailOnChange, passwordOnChange } = loginSlice.actions
 export default loginSlice.reducer;

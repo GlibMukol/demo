@@ -27,7 +27,7 @@ const TextInput = (params: TTextInput) => {
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => onChange(e.target.value);
     return (
-        <div className="relative flex flex-col p-3">
+        <div className="relative flex flex-col w-full p-3">
             <label htmlFor={id} className={clsx("absolute bg-background", isError && "text-error", value || isFocus ? "top-0 left scale-70" : "top-5 left-5 opacity-90")}>
                 <span className="opacity-70">
                     {label}
@@ -44,7 +44,7 @@ const TextInput = (params: TTextInput) => {
                 onFocus={() => setOnFocus(true)}
                 onBlur={() => setOnFocus(false)}
             />
-            <p className={clsx("absolute -bottom-1 text-[.8rem] text-error opacity-0", isError && "opacity-85")} > {errorMessoge}</p>
+            <p className={clsx("absolute top-13 text-[.8rem] text-error opacity-0", isError && "opacity-85")} > {errorMessoge}</p>
         </div >
     )
 }
