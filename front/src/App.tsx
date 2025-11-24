@@ -2,6 +2,7 @@ import { useState } from "react"
 import Container from "./components/ui/containers/container"
 import TextInput from "./components/ui/containers/TextInput"
 import Panel from "./components/ui/containers/Panel";
+import HDirection from "./components/ui/containers/HDirection";
 
 
 function App() {
@@ -12,12 +13,13 @@ function App() {
     <>
       <div className="w-full h-screen">
         <Container>
-          <Panel>
+          <div className="w-[80rem] h-[30rem]">
+            <HDirection>
+              <div className="h-full w-full bg-amber-700" >asd</div>
+              <div className="h-full w-full bg-green-600">dsa</div>
+            </HDirection>
+          </div>
 
-            <TextInput onChange={hadleChangeIput} value={testString} name="test" label="placeholder" isError={test} errorMessoge="Message" />
-            <TextInput onChange={hadleChangeIput} value={testString} name="test" label="placeholder" isError={test} errorMessoge="Message" />
-          </Panel>
-          <button className="btn" onClick={() => { setState(prev => !prev) }}>test</button>
         </Container>
       </div>
     </>
