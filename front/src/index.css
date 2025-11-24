@@ -40,10 +40,8 @@
     color: var(--fg);
   }
   input {
-    border-color: var(--fg);
-  }
-  input[data-error="true"] {
-    border-color: var(--error);
+    outline-color: var(--fg);
+    box-sizing: border-box;
   }
 }
 
@@ -52,5 +50,9 @@
 }
 
 input {
-  @apply border p-2 cursor-pointer shadow rounded hover:rounded-lg hover:shadow-2xl focus:border-2 focus:rounded-xl;
+  @apply ring p-2 cursor-pointer shadow rounded hover:rounded-lg hover:shadow-2xl focus:ring-2  focus:rounded-xl data-[error="true"]:ring-error;
+}
+
+button {
+  @apply bg-primary pl-2 pr-2 pt-1 pb-1 rounded-xl text-background hover:scale-120 disabled:scale-100 disabled:opacity-80;
 }

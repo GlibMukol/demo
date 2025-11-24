@@ -1,16 +1,17 @@
 import Panel from "../../ui/containers/Panel"
 import VDirection from "../../ui/containers/VDirection"
-import TextInput from "../../ui/containers/TextInput"
-import PasswordInput from "../../ui/containers/PasswordInput"
+import TextInput from "../../ui/components/TextInput"
+import PasswordInput from "../../ui/components/PasswordInput"
 import { useLogin } from "./hook"
 import type { TLoginField } from "../../../store/slices/loginSlice"
-import Container from "../../ui/containers/container"
+import Container from "../../ui/containers/Container"
+import Button from "../../ui/components/Button"
 
 
 const setValidationResult = ({ valid, value, errors }: TLoginField) => ({
     isError: !valid,
     value,
-    errorMessoge: !valid ? errors[0] : ""
+    errorMessage: !valid ? errors[0] : ""
 
 })
 
@@ -34,6 +35,7 @@ const Login = () => {
                         label="Password"
                         {...setValidationResult(password)}
                     />
+                    <Button title="LogIn" onClick={() => { }} disabled={true} />
                 </VDirection>
             </Container>
 

@@ -3,7 +3,7 @@ import { useState, type ChangeEvent, useId } from "react"
 
 export type TInputError = {
     isError: boolean,
-    errorMessoge: string
+    errorMessage: string
 }
 
 export type TInput<S = string, D = string> = {
@@ -23,7 +23,7 @@ const TextInput = (params: TTextInput) => {
     const [isFocus, setOnFocus] = useState(false);
     const id = useId();
 
-    const { onChange, name, type = "text", label = "", styles = "", value = '', isError = false, errorMessoge = "", } = params;
+    const { onChange, name, type = "text", label = "", styles = "", value = '', isError = false, errorMessage = "", } = params;
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => onChange(e.target.value);
     return (
@@ -44,7 +44,7 @@ const TextInput = (params: TTextInput) => {
                 onFocus={() => setOnFocus(true)}
                 onBlur={() => setOnFocus(false)}
             />
-            <p className={clsx("absolute top-13 text-[.8rem] text-error opacity-0", isError && "opacity-85")} > {errorMessoge}</p>
+            <p title={errorMessage} className={clsx("absolute top-13  left-3 right-0 text-[.8rem] text-error opacity-0 truncate cursor-pointer", isError && "opacity-85")} > {errorMessage}</p>
         </div >
     )
 }
