@@ -1,6 +1,5 @@
 import { useState } from "react"
 import Container from "./components/ui/containers/container"
-import VDirection from "./components/ui/containers/VDirection";
 import Login from "./components/auth/login/Login";
 
 

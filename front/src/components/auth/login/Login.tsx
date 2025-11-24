@@ -14,13 +14,13 @@ const Login = () => {
                     onChange={setEmail}
                     name="email"
                     label="Email"
-                    value={email}
+                    value={email.value}
                 />
                 <PasswordInput
                     onChange={setPassword}
                     name="password"
                     label="Password"
-                    value={password}
+                    value={password.value}
                 />
             </VDirection>
         </Panel>
