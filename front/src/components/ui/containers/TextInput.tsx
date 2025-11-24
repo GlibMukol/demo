@@ -1,28 +1,29 @@
 import clsx from "clsx"
 import { useState, type ChangeEvent, useId } from "react"
 
-type TInputError = {
+export type TInputError = {
     isError: boolean,
     errorMessoge: string
 }
 
-type TInput<S = string, D = string> = {
+export type TInput<S = string, D = string> = {
     onChange: (s: S) => void
     name: string
+    type?: "text" | "password"
     label?: string
     styles?: string
     value?: D
     placeholder?: string
 } & Partial<TInputError>
 
-type TTextInput = TInput<string, string>
+export type TTextInput = TInput<string, string>
 
 const TextInput = (params: TTextInput) => {
 
     const [isFocus, setOnFocus] = useState(false);
     const id = useId();
 
-    const { onChange, name, label = "", styles = "", value = '', isError = false, errorMessoge = "", } = params;
+    const { onChange, name, type = "text", label = "", styles = "", value = '', isError = false, errorMessoge = "", } = params;
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => onChange(e.target.value);
     return (
@@ -36,7 +37,7 @@ const TextInput = (params: TTextInput) => {
                 id={id}
                 className={clsx(styles)}
                 name={name}
-                type="text"
+                type={type}
                 onChange={handleChange}
                 value={value}
                 data-error={isError}
