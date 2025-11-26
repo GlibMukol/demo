@@ -1,18 +1,25 @@
 import { useAppDispatch, useAppSelector } from "../../../store/store";
-import { emailOnChange, passwordOnChange } from "../../../store/slices/loginSlice";
+import { emailOnChange, loginAsync, passwordOnChange } from "../../../store/slices/loginSlice";
 
 export const useLogin = () => {
 
-    const { email, password } = useAppSelector((store) => store.login);
-    const dispatch = useAppDispatch()
+    const { email, password, load } = useAppSelector((store) => store.login);
+    const dispatch = useAppDispatch();
+    const isDisabled = !(email.valid && password.valid) || email.value.length === 0 || password.value.length === 0;
+    const login = () => dispatch(loginAsync({ email: email.value, password: password.value }))
 
     const setEmail = (value: string) => dispatch(emailOnChange(value))
     const setPassword = (value: string) => dispatch(passwordOnChange(value))
+
+
 
     return {
         email,
         password,
         setEmail,
-        setPassword
+        setPassword,
+        isDisabled,
+        login,
+        load
     }
 }

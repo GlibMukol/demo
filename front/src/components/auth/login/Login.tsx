@@ -6,6 +6,7 @@ import { useLogin } from "./hook"
 import type { TLoginField } from "../../../store/slices/loginSlice"
 import Container from "../../ui/containers/Container"
 import Button from "../../ui/components/Button"
+import LoadIcon from "../../ui/animated/LoadIcon"
 
 
 const setValidationResult = ({ valid, value, errors }: TLoginField) => ({
@@ -17,7 +18,7 @@ const setValidationResult = ({ valid, value, errors }: TLoginField) => ({
 
 const Login = () => {
 
-    const { email, setEmail, password, setPassword } = useLogin();
+    const { email, setEmail, password, setPassword, isDisabled, login, load } = useLogin();
     return (
         <Panel styles="w-1/6">
             <Container styles="">
@@ -35,11 +36,16 @@ const Login = () => {
                         label="Password"
                         {...setValidationResult(password)}
                     />
-                    <Button title="LogIn" onClick={() => { }} disabled={true} />
+                    <Button title="LogIn" onClick={() => login()} disabled={isDisabled || load}>
+                        {load ?
+                            <LoadIcon />
+                            : `LogIn`
+                        }
+                    </Button>
                 </VDirection>
             </Container>
 
-        </Panel>
+        </Panel >
     )
 }
 

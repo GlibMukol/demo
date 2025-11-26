@@ -2,19 +2,23 @@ type TButton = {
     onClick: () => void
     title: string
     disabled?: boolean
+    children: React.ReactNode
 
 }
 
+
 const Button = (params: TButton) => {
-    const { onClick, title, disabled = false } = params;
+    const { onClick, children, disabled = false } = params;
     return (
-        <div className="p-2">
+        <div className="flex" title={disabled ? "Enter valid credentials" : "LogIn"}>
             <button
                 onClick={() => onClick()}
                 disabled={disabled}
                 className="btn bg-red-700"
             >
-                {title}
+                <div className="w-16 h-6 flex items-center justify-center">
+                    {children}
+                </div>
             </button>
         </div>
 
