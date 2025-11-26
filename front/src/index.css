@@ -50,7 +50,7 @@
 }
 
 input {
-  @apply ring p-2 cursor-pointer shadow rounded hover:rounded-lg hover:shadow-2xl focus:ring-2  focus:rounded-xl data-[error="true"]:ring-error;
+  @apply ring p-2 cursor-pointer shadow rounded hover:rounded-lg hover:shadow-2xl focus:ring-2  focus:rounded-xl data-[error="true"]:ring-error data-[error="true"]:text-error;
 }
 
 button {

@@ -10,7 +10,7 @@ type TButton = {
 const Button = (params: TButton) => {
     const { onClick, children, disabled = false } = params;
     return (
-        <div className="flex" title={disabled ? "Enter valid credentials" : "LogIn"}>
+        <div className="flex m-1" title={disabled ? "Enter valid credentials" : "LogIn"}>
             <button
                 onClick={() => onClick()}
                 disabled={disabled}

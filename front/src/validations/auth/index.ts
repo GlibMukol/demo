@@ -31,6 +31,11 @@ type TConfirmValidation = {
 };
 
 
+
+
+export const emailValidation = loginFieldValidation.bind(null, EmailSchema);
+export const passwordValidation = loginFieldValidation.bind(null, PasswordSchema);
+
 export const confirmValidation = (password: string, confirm: string): TConfirmValidation => {
     const valid = password === confirm;
     const result = (value: string): TAuthFieldInput => ({
@@ -39,12 +44,7 @@ export const confirmValidation = (password: string, confirm: string): TConfirmVa
         errors: valid ? [] : ["Confirm with Password not match"]
     })
     return ({
-        password: { ...result(password) },
+        password: { ...passwordValidation(password) },
         confirm: { ...result(confirm) }
     })
 }
-
-export const emailValidation = loginFieldValidation.bind(null, EmailSchema);
-export const passwordValidation = loginFieldValidation.bind(null, PasswordSchema);
-
-
