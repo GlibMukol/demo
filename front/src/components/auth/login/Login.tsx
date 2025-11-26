@@ -11,8 +11,7 @@ import { setValidationResult } from "../helper"
 
 
 const Login = () => {
-
-    const { email, setEmail, password, setPassword, isDisabled, login, load } = useLogin();
+    const { email, setEmail, password, setPassword, disabled, login, load } = useLogin();
     return (
         <Panel styles="w-1/6">
             <Container>
@@ -29,7 +28,7 @@ const Login = () => {
                         label="Password"
                         {...setValidationResult(password)}
                     />
-                    <Button title="LogIn" onClick={() => login()} disabled={isDisabled || load}>
+                    <Button title="LogIn" onClick={() => login()} disabled={disabled || load}>
                         {load ?
                             <LoadIcon />
                             : `LogIn`

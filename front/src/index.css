@@ -54,5 +54,5 @@ input {
 }
 
 button {
-  @apply bg-primary pl-2 pr-2 text-center font-bold pt-1 pb-1 rounded-xl text-background hover:scale-120 disabled:scale-100 disabled:opacity-80;
+  @apply bg-primary pl-2 pr-2 text-center font-bold pt-1 pb-1 rounded-xl text-background hover:scale-120 disabled:scale-100 disabled:opacity-80 disabled:cursor-not-allowed;
 }

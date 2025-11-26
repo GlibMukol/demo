@@ -1,13 +1,14 @@
 import { createAsyncThunk, createSlice, type PayloadAction } from "@reduxjs/toolkit";
-import type { TFiledValid } from "./loginSlice";
+// import type { TFiledValid } from "./loginSlice";
 import { confirmValidation, emailValidation, passwordValidation } from "../../validations/auth";
+import type { TAuthFieldInput } from "../types";
 
-export type TSignInField = TFiledValid<string, Array<string>>
+// export type TSignInField = TFiledValid<string, Array<string>>
 
 type TSignIn = {
-    email: TSignInField
-    password: TSignInField
-    confirm: TSignInField
+    email: TAuthFieldInput
+    password: TAuthFieldInput
+    confirm: TAuthFieldInput
     load: boolean
 };
 
@@ -15,7 +16,7 @@ const initFieldValue = {
     value: "",
     valid: true,
     errors: []
-} satisfies TSignInField;
+} satisfies TAuthFieldInput;
 
 const setInitStete = <T>(strs: string[]): T => strs.reduce((acc, cur) => {
     return {
@@ -51,12 +52,12 @@ const signInSlice = createSlice({
         },
         passwordOnChange: (state, { payload: password }: PayloadAction<string>) => {
             state.password = passwordValidation(password);
+            state.confirm = confirmValidation(state.password.value, state.confirm.value).confirm;
         },
-        onConfirmChange: (state, { payload: confirm }: PayloadAction<string>) => {
-            state = {
-                ...state,
-                ...confirmValidation(state.password.value, confirm)
-            }
+        confirmOnChange: (state, { payload: confirmPwd }: PayloadAction<string>) => {
+            const { password, confirm } = confirmValidation(state.password.value, confirmPwd)
+            state.password = password;
+            state.confirm = confirm;
         }
     },
     extraReducers(builder) {
@@ -71,5 +72,5 @@ const signInSlice = createSlice({
 });
 
 
-
-export default signInSlice.reducer
+export const { emailOnChange, confirmOnChange, passwordOnChange } = signInSlice.actions;
+export default signInSlice.reducer;

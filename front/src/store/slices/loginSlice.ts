@@ -1,17 +1,12 @@
 import { createAsyncThunk, createSlice, type PayloadAction } from '@reduxjs/toolkit';
 import { emailValidation, passwordValidation } from '../../validations/auth';
+import type { TAuthFieldInput } from '../types';
 
-export type TFiledValid<T, E> = {
-    value: T,
-    valid: boolean,
-    errors: E
-}
-
-export type TLoginField = TFiledValid<string, Array<string>>
+// export type TLoginField = TFiledValid<string, Array<string>>
 
 type TLogin = {
-    email: TLoginField
-    password: TLoginField,
+    email: TAuthFieldInput
+    password: TAuthFieldInput,
     load: boolean,
 }
 
@@ -21,7 +16,7 @@ const initFieldValue = {
     errors: [],
 
 
-} satisfies TLoginField
+} satisfies TAuthFieldInput
 
 const initialState: TLogin = {
     email: initFieldValue,

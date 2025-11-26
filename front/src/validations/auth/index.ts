@@ -1,9 +1,9 @@
 import { ZodError, type ZodType } from 'zod';
 import { EmailSchema, PasswordSchema } from '../common';
-import type { TLoginField } from '../../store/slices/loginSlice';
+import type { TAuthFieldInput } from '../../store/types';
 
-const loginFieldValidation = (schema: ZodType<string>, str: string): TLoginField => {
-    let result: TLoginField = {
+const loginFieldValidation = (schema: ZodType<string>, str: string): TAuthFieldInput => {
+    let result: TAuthFieldInput = {
         valid: true,
         errors: [],
         value: str
@@ -26,22 +26,22 @@ const loginFieldValidation = (schema: ZodType<string>, str: string): TLoginField
 
 
 type TConfirmValidation = {
-    password: TLoginField, confirm: TLoginField
+    password: TAuthFieldInput,
+    confirm: TAuthFieldInput
 };
 
 
 export const confirmValidation = (password: string, confirm: string): TConfirmValidation => {
     const valid = password === confirm;
-    const result = (value: string): TLoginField => ({
+    const result = (value: string): TAuthFieldInput => ({
         valid,
         value,
-        errors: valid ? [] : ["Confirm and Password not match"]
+        errors: valid ? [] : ["Confirm with Password not match"]
     })
-    return (
-        {
-            password: result(password),
-            confirm: result(confirm)
-        })
+    return ({
+        password: { ...result(password) },
+        confirm: { ...result(confirm) }
+    })
 }
 
 export const emailValidation = loginFieldValidation.bind(null, EmailSchema);

@@ -1,11 +1,12 @@
 import { useAppDispatch, useAppSelector } from "../../../store/store";
 import { emailOnChange, loginAsync, passwordOnChange } from "../../../store/slices/loginSlice";
+import { isDisabled } from "../helper";
 
 export const useLogin = () => {
 
-    const { email, password, load } = useAppSelector((store) => store.login);
+    const { email, password, load } = useAppSelector(store => store.login);
     const dispatch = useAppDispatch();
-    const isDisabled = !(email.valid && password.valid) || email.value.length === 0 || password.value.length === 0;
+    const disabled = isDisabled([email, password])
     const login = () => dispatch(loginAsync({ email: email.value, password: password.value }))
 
     const setEmail = (value: string) => dispatch(emailOnChange(value))
@@ -18,7 +19,7 @@ export const useLogin = () => {
         password,
         setEmail,
         setPassword,
-        isDisabled,
+        disabled,
         login,
         load
     }
