@@ -9,7 +9,7 @@ export type TInputError = {
 export type TInput<S = string, D = string> = {
     onChange: (s: S) => void
     name: string
-    type?: "text" | "password"
+    type?: "text" | "password" | "email"
     label?: string
     styles?: string
     value?: D

@@ -1,12 +1,12 @@
 import Panel from "../../ui/containers/Panel"
 import VDirection from "../../ui/containers/VDirection"
-import TextInput from "../../ui/components/TextInput"
 import PasswordInput from "../../ui/components/PasswordInput"
 import { useLogin } from "./hook"
 import type { TLoginField } from "../../../store/slices/loginSlice"
 import Container from "../../ui/containers/Container"
 import Button from "../../ui/components/Button"
 import LoadIcon from "../../ui/animated/LoadIcon"
+import Emailnput from "../../ui/components/Emailnput"
 
 
 const setValidationResult = ({ valid, value, errors }: TLoginField) => ({
@@ -23,7 +23,7 @@ const Login = () => {
         <Panel styles="w-1/6">
             <Container styles="">
                 <VDirection>
-                    <TextInput
+                    <Emailnput
                         onChange={setEmail}
                         name="email"
                         label="Email"
