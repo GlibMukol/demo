@@ -1,5 +1,5 @@
 import Container from "./components/ui/containers/Container"
-import Login from "./components/auth/login/Login";
+import SignIn from "./components/auth/signin/SignIn";
 
 
 function App() {
@@ -8,7 +8,7 @@ function App() {
     <>
       <div className="w-full h-screen">
         <Container>
-          <Login />
+          <SignIn />
         </Container>
       </div>
     </>

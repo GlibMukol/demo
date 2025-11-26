@@ -25,6 +25,26 @@ const loginFieldValidation = (schema: ZodType<string>, str: string): TLoginField
 };
 
 
+type TConfirmValidation = {
+    password: TLoginField, confirm: TLoginField
+};
+
+
+export const confirmValidation = (password: string, confirm: string): TConfirmValidation => {
+    const valid = password === confirm;
+    const result = (value: string): TLoginField => ({
+        valid,
+        value,
+        errors: valid ? [] : ["Confirm and Password not match"]
+    })
+    return (
+        {
+            password: result(password),
+            confirm: result(confirm)
+        })
+}
+
 export const emailValidation = loginFieldValidation.bind(null, EmailSchema);
 export const passwordValidation = loginFieldValidation.bind(null, PasswordSchema);
+
 

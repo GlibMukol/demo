@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice, type PayloadAction } from '@reduxjs/toolkit';
 import { emailValidation, passwordValidation } from '../../validations/auth';
 
-type TFiledValid<T, E> = {
+export type TFiledValid<T, E> = {
     value: T,
     valid: boolean,
     errors: E
@@ -45,14 +45,14 @@ const loginSlice = createSlice({
     extraReducers(builder) {
         builder.addCase(loginAsync.fulfilled, (state, action) => {
             state.load = false;
-            console.log('action', action)
+            // console.log('action', action)
         }).addCase(loginAsync.pending, (state) => {
             state.load = true
             // console.log('action', action)
 
         }).addCase(loginAsync.rejected, (state, action) => {
             state.load = false;
-            console.log('action', action)
+            // console.log('action', action)
 
         })
     },
