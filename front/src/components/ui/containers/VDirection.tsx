@@ -1,13 +1,15 @@
 import { clsx } from "clsx"
+import type { RefObject } from "react"
 
 type TVDirection = {
     children: React.ReactNode,
-    styles?: string
+    styles?: string,
+    ref?: RefObject<HTMLDivElement | null>
 }
 
-const VDirection = ({ children, styles = "" }: TVDirection) => {
+const VDirection = ({ children, ref, styles = "", }: TVDirection) => {
     return (
-        <div className={clsx("relative flex flex-col items-center justify-center h-full w-full", styles)}>
+        <div ref={ref} className={clsx("relative flex flex-col items-center justify-center h-full w-full", styles)}>
             {children}
         </div>
     )

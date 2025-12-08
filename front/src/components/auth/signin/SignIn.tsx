@@ -21,7 +21,7 @@ const SignIn = () => {
         signIn
     } = useSignIn();
     return (
-        <Panel styles="w-1/6">
+        <Panel styles="w-1/3">
             <Container styles="">
                 <VDirection>
                     <Emailnput
